@@ -1,10 +1,12 @@
 # Lighthouse Accessibility (LAX) Linter for VSCode
 
-(This is a personal project, not sponsored by or associated with Google Lighthouse in any way)
 
 A VSCode extension that provides accessibility linting/hinting for HTML and PHP files using axe-core based on the [Google Lighthouse Accessibility scores](https://developer.chrome.com/docs/lighthouse/accessibility/scoring). This extension helps you identify accessibility issues in your code while you type.
 
 A lot of other accessibility linters are available, but very few (if any) provide support for PHP files, or are specifically targeted to work with Google Lighthouse Accessibility checks.
+
+> [!NOTE]
+> This is a personal project, not sponsored by or associated with Google Lighthouse or the Los Angeles International Airport in any way :)
 
 ## Features
 
