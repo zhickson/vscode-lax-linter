@@ -1,7 +1,9 @@
-# Lighthouse Accessibility (LAX) Linter for VSCode
+# Lighthouse Accessibility (LAX) Linter for VS Code (WIP)
 
+> [!IMPORTANT]
+> This extension is in early development stages and not ready for regular/production usage.
 
-A VSCode extension that provides accessibility linting/hinting for HTML and PHP files using axe-core based on the [Google Lighthouse Accessibility scores](https://developer.chrome.com/docs/lighthouse/accessibility/scoring). This extension helps you identify accessibility issues in your code while you type.
+A VS Code extension that provides accessibility linting/hinting for HTML and PHP files using axe-core based on the [Google Lighthouse Accessibility scores](https://developer.chrome.com/docs/lighthouse/accessibility/scoring). This extension helps you identify accessibility issues in your code while you type.
 
 A lot of other accessibility linters are available, but very few (if any) provide support for PHP files, or are specifically targeted to work with Google Lighthouse Accessibility checks.
 
@@ -11,10 +13,11 @@ A lot of other accessibility linters are available, but very few (if any) provid
 ## Features
 
 - Real-time accessibility checking for HTML and PHP files
-- Integration with VSCode's native linting system
+- Integration with VS Code's native linting system
 - Based on the Google Lighthouse Accessibility scoring system
-- Detailed error messages with suggested fixes
-- Configurable rule sets
+- Uses [axe-core](https://github.com/dequelabs/axe-core) under the hood
+- Detailed error messages with links back to the a11y rules for more information
+- Configurable rule sets (TBC)
 
 ## Installation
 
@@ -71,4 +74,4 @@ MIT
 
 ## Changelog
 
-TBC
+v0.0.1-dev WIP

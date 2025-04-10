@@ -1,101 +1,96 @@
 {
-    "name": "vscode-lax-linter",
-    "displayName": "Lighthouse Accessibility (LAX Linter",
-    "description": "Lint HTML and PHP files for common accessibility issues",
-    "version": "0.0.1",
-    "engines": {
-        "vscode": "^1.85.0"
-    },
-    "categories": [
-        "Linters",
-        "Other"
-    ],
-    "activationEvents": [
-        "onLanguage:html",
-        "onLanguage:php"
-    ],
-    "main": "./out/src/extension.js",
-    "contributes": {
-        "configuration": {
-            "title": "Lighthouse Accessibility (LAX) Linter",
-            "properties": {
-                "laxLinter.enable": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Enable/disable the Lighthouse Accessibility (LAX) linter."
-                },
-                "laxLinter.run": {
-                    "type": "string",
-                    "enum": [
-                        "onType",
-                        "onSave"
-                    ],
-                    "default": "onType",
-                    "description": "When to run the linter: 'onType' (after a delay) or 'onSave'."
-                },
-                "laxLinter.debounceDelay": {
-                    "type": "number",
-                    "default": 500,
-                    "description": "Delay in milliseconds after typing stops before running the linter (only applies when 'laxLinter.run' is 'onType')."
-                },
-                "laxLinter.includedLanguages": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "default": [
-                        "html",
-                        "php"
-                    ],
-                    "description": "Array of language identifiers for which the linter should be active."
-                },
-                "laxLinter.maxFileSize": {
-                    "type": "number",
-                    "default": 0,
-                    "description": "Maximum file size in bytes for linting. Set to 0 to disable the limit."
-                },
-                "laxLinter.axe.rules": {
-                    "type": "object",
-                    "default": {},
-                    "description": "Axe-core rules configuration object. Use to disable specific rules (e.g., { \"color-contrast\": { \"enabled\": false } }). This overrides the tags selection.",
-                    "additionalProperties": {
-                        "type": "object",
-                        "properties": {
-                            "enabled": {
-                                "type": "boolean"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./ && tsc -p ./server",
-        "watch": "tsc -watch -p ./",
-        "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts",
-        "test": "node ./out/test/runTest.js",
-        "start-server": "axe --port 3000"
-    },
-    "devDependencies": {
-        "@types/htmlparser2": "^4.1.0",
-        "@types/jsdom": "^21.1.7",
-        "@types/node": "18.x",
-        "@types/vscode": "^1.85.0",
-        "@typescript-eslint/eslint-plugin": "^6.15.0",
-        "@typescript-eslint/parser": "^6.15.0",
-        "axe-core": "^4.10.3",
-        "eslint": "^8.56.0",
-        "hint": "^7.1.13",
-        "jsdom": "^26.0.0",
-        "typescript": "^5.3.3",
-        "vscode-languageclient": "^8.1.0",
-        "vscode-languageserver": "^8.1.0",
-        "vscode-languageserver-textdocument": "^1.0.11"
-    },
-    "dependencies": {
-        "@axe-core/cli": "^4.8.2"
-    }
+	"name": "vscode-lax-linter",
+	"displayName": "Lighthouse Accessibility (LAX) Linter",
+	"description": "Lint HTML and PHP files for common accessibility issues",
+	"version": "0.0.1-dev",
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"categories": [
+		"Linters",
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:html",
+		"onLanguage:php"
+	],
+	"main": "./out/src/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "Lighthouse Accessibility (LAX) Linter",
+			"properties": {
+				"laxLinter.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable/disable the Lighthouse Accessibility (LAX) linter."
+				},
+				"laxLinter.run": {
+					"type": "string",
+					"enum": [
+						"onType",
+						"onSave"
+					],
+					"default": "onType",
+					"description": "When to run the linter: 'onType' (after a delay) or 'onSave'."
+				},
+				"laxLinter.debounceDelay": {
+					"type": "number",
+					"default": 500,
+					"description": "Delay in milliseconds after typing stops before running the linter (only applies when 'laxLinter.run' is 'onType')."
+				},
+				"laxLinter.includedLanguages": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"html",
+						"php"
+					],
+					"description": "Array of language identifiers for which the linter should be active."
+				},
+				"laxLinter.maxFileSize": {
+					"type": "number",
+					"default": 0,
+					"description": "Maximum file size in bytes for linting. Set to 0 to disable the limit."
+				},
+				"laxLinter.axe.rules": {
+					"type": "array",
+					"default": [],
+					"description": "Axe-core rules configuration object. Use to set specific rules to run.",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./ && tsc -p ./server",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js",
+		"start-server": "axe --port 3000"
+	},
+	"devDependencies": {
+		"@types/htmlparser2": "^4.1.0",
+		"@types/jsdom": "^21.1.7",
+		"@types/node": "18.x",
+		"@types/vscode": "^1.85.0",
+		"@typescript-eslint/eslint-plugin": "^6.15.0",
+		"@typescript-eslint/parser": "^6.15.0",
+		"axe-core": "^4.10.3",
+		"eslint": "^8.56.0",
+		"hint": "^7.1.13",
+		"jsdom": "^26.0.0",
+		"typescript": "^5.3.3",
+		"vscode-languageclient": "^8.1.0",
+		"vscode-languageserver": "^8.1.0",
+		"vscode-languageserver-textdocument": "^1.0.11"
+	},
+	"dependencies": {
+		"@axe-core/cli": "^4.8.2"
+	}
 }
