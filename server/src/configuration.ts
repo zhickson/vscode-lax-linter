@@ -22,7 +22,7 @@ export const defaultSettings: LaxLinterSettings = {
 	maxFileSize: 1048576, // 1MB
 	axe: {
 		tags: ['wcag2aa', 'wcag21aa', 'best-practice'],
-		rules: {}
+		rules: []
 	}
 };
 
