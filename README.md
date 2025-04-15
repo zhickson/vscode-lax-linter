@@ -65,6 +65,8 @@ To build and run the extension locally:
 MIT
 
 ## WISHLIST
+- [] Add command(s) for manually linting a file
+- [] Add better settings options for configuring the extension
 - [] Improve the accuracy of linting error reporting/highlighting
 - [] Add support for more languages natively, such as JSX/React, etc.
 
