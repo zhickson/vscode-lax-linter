@@ -36,19 +36,15 @@ You can configure the extension through VSCode's settings:
 {
   "laxLinter.enabled": true,
   "laxLinter.run": "onSave|onType",
-  "laxLinter.rules": [],
   "laxLinter.debounceDelay": 500,
   "laxLinter.maxFileSize": 0,
-  "laxLinter.includedLanguages": [], // NOT SUPPORTED YET
 }
 ```
 
 - `laxLinter.enabled`: Enable/disable the linter
 - `laxLinter.run`: Select either "onSave" (default) or "onType" for when the linting happens
-- `laxLinter.rules`: Array of specific axe-core rule IDs to enable/disable
 - `laxLinter.debounceDelay`: The debounce delay in milliseconds for linting the current doc (500ms default)
 - `laxLinter.maxFileSize`: Maximum file size to lint (in bytes), default is unlimited (0)
-- `laxLinter.includedLanguages`: Array of specific language IDs to lint (NOT SUPPORTED YET, HTML and PHP files only)
 
 ## Development
 
