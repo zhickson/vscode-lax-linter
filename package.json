@@ -3,6 +3,7 @@
 	"displayName": "Lighthouse Accessibility (LAX) Linter",
 	"description": "Lint HTML and PHP files for common accessibility issues",
 	"version": "0.0.1-alpha",
+	"icon": "icon.png",
 	"publisher": "zhickson",
 	"homepage": "https://github.com/zhickson/vscode-lax-linter",
 	"license": "MIT",
