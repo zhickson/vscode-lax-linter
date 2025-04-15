@@ -5,12 +5,7 @@ export interface LaxLinterSettings {
 	enable: boolean;
 	run: 'onType' | 'onSave';
 	debounceDelay: number;
-	includedLanguages: string[];
-	maxFileSize: number; // in bytes, 0 for no limit
-	axe: {
-		tags: string[];
-		rules: string[];
-	};
+	maxFileSize: number; // in bytes
 }
 
 // Default settings used when the client doesn't provide them
@@ -18,12 +13,7 @@ export const defaultSettings: LaxLinterSettings = {
 	enable: true,
 	run: 'onType',
 	debounceDelay: 500,
-	includedLanguages: ['html', 'php'],
 	maxFileSize: 1048576, // 1MB
-	axe: {
-		tags: ['wcag2aa', 'wcag21aa', 'best-practice'],
-		rules: []
-	}
 };
 
 // Cache for global settings

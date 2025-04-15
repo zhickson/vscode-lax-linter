@@ -1,19 +1,20 @@
-import * as path from 'path';
 import {
 	workspace,
 	ExtensionContext,
 	window,
-	commands,
-	languages
 } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient/node';
 
 let client: LanguageClient;
 
+/**
+ * Activate Extension
+ * @param context
+ */
 export async function activate(context: ExtensionContext) {
 	try {
 		// The server is implemented in node
-		const serverModule = context.asAbsolutePath(path.join('out', 'server', 'src', 'server.js'));
+		const serverModule = context.asAbsolutePath('out/server.js');
 
 		// If the extension is launched in debug mode then the debug server options are used
 		// Otherwise the run options are used

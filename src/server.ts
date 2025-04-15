@@ -1,21 +1,15 @@
 import {
 	createConnection,
 	TextDocuments,
-	Diagnostic,
-	DiagnosticSeverity,
 	ProposedFeatures,
 	InitializeParams,
 	DidChangeConfigurationNotification,
 	TextDocumentSyncKind,
 	InitializeResult,
-	Range,
-	Position,
-	TextDocumentChangeEvent,
-	Disposable,
 	Connection
 } from 'vscode-languageserver/node';
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { LaxLinterSettings, defaultSettings, getDocumentSettings, setConfigurationCapability, updateGlobalSettings, clearDocumentSettings } from './configuration';
+import { LaxLinterSettings, defaultSettings, setConfigurationCapability, updateGlobalSettings, clearDocumentSettings } from './configuration';
 import { Analyzer } from './utils/analyze';
 
 // Create a connection for the server
@@ -111,10 +105,6 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	if (!currentSettings.enable) {
 		connection.console.log('Lighthouse Accessibility Linter disabled via settings.');
 		connection.sendDiagnostics({ uri: textDocument.uri, diagnostics: [] });
-		return;
-	}
-	if (!currentSettings.includedLanguages.includes(textDocument.languageId)) {
-		connection.console.log(`Skipping validation for language: ${textDocument.languageId}`);
 		return;
 	}
 	const text = textDocument.getText();

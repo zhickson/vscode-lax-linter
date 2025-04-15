@@ -2,7 +2,17 @@
 	"name": "vscode-lax-linter",
 	"displayName": "Lighthouse Accessibility (LAX) Linter",
 	"description": "Lint HTML and PHP files for common accessibility issues",
-	"version": "0.0.1-dev",
+	"version": "0.0.1-alpha",
+	"publisher": "zhickson",
+	"homepage": "https://github.com/zhickson/vscode-lax-linter",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zhickson/vscode-lax-linter.git"
+	},
+	"bugs": {
+		"url": "https://github.com/zhickson/vscode-lax-linter/issues"
+	},
 	"engines": {
 		"vscode": "^1.85.0"
 	},
@@ -14,7 +24,7 @@
 		"onLanguage:html",
 		"onLanguage:php"
 	],
-	"main": "./out/src/extension.js",
+	"main": "./out/main.js",
 	"contributes": {
 		"configuration": {
 			"title": "Lighthouse Accessibility (LAX) Linter",
@@ -38,41 +48,23 @@
 					"default": 500,
 					"description": "Delay in milliseconds after typing stops before running the linter (only applies when 'laxLinter.run' is 'onType')."
 				},
-				"laxLinter.includedLanguages": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"default": [
-						"html",
-						"php"
-					],
-					"description": "Array of language identifiers for which the linter should be active."
-				},
 				"laxLinter.maxFileSize": {
 					"type": "number",
 					"default": 0,
 					"description": "Maximum file size in bytes for linting. Set to 0 to disable the limit."
-				},
-				"laxLinter.axe.rules": {
-					"type": "array",
-					"default": [],
-					"description": "Axe-core rules configuration object. Use to set specific rules to run.",
-					"items": {
-						"type": "string"
-					}
 				}
 			}
 		}
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./ && tsc -p ./server",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
+		"compile": "rimraf out && tsc -p ./",
+		"vscode:prepublish": "npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
 		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js",
-		"start-server": "axe --port 3000"
+		"pretest": "npm run compile && npm run lint",
+		"test": "vscode-test"
 	},
 	"devDependencies": {
 		"@types/htmlparser2": "^4.1.0",
@@ -82,7 +74,9 @@
 		"@typescript-eslint/eslint-plugin": "^6.15.0",
 		"@typescript-eslint/parser": "^6.15.0",
 		"axe-core": "^4.10.3",
+		"esbuild": "^0.25.2",
 		"eslint": "^8.56.0",
+		"eslint-plugin-prettier": "^5.2.6",
 		"hint": "^7.1.13",
 		"jsdom": "^26.0.0",
 		"typescript": "^5.3.3",

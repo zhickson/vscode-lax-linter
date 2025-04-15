@@ -150,6 +150,7 @@ export class Analyzer {
 			}
 
 			// Ensure settings and rules array exist before accessing
+			// TODO: Add support for custom rule configuration
 			const rulesToRun = defaultRules.map(rule => `"${rule}"`);
 
 			// Add our custom runA11yChecks function to the DOM
